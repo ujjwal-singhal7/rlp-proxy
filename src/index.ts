@@ -16,10 +16,7 @@ const sendResponse = (res: Response, output: APIOutput | null) => {
       .json({ metadata: null });
   }
 
-  return res
-    .set('Access-Control-Allow-Origin', '*')
-    .status(200)
-    .json({ metadata: output });
+  return res.set('Access-Control-Allow-Origin', '*').status(200).json(output);
 };
 
 app.listen(port, () => {
