@@ -63,11 +63,7 @@ app.get('/v2', async (req, res) => {
       }
       const { images, og, meta } = metadata!;
 
-      let image = og.image
-        ? og.image
-        : images.length > 0
-        ? images[0].url
-        : `${SERVER_URL}/img-placeholder.jpg`;
+      let image = og.image ? og.image : images.length > 0 ? images[0].url : '';
       const description = og.description
         ? og.description
         : meta.description
