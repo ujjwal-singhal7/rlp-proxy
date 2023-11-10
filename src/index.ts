@@ -10,10 +10,13 @@ const SERVER_URL = process.env.SERVER_URL;
 
 const sendResponse = (res: Response, output: APIOutput | null) => {
   if (!output) {
-    return res
-      .set('Access-Control-Allow-Origin', '*')
-      .status(404)
-      .json({ metadata: null });
+    return (
+      res
+        .set('Access-Control-Allow-Origin', '*')
+        // sending 200 even when no response
+        .status(200)
+        .json({ metadata: null })
+    );
   }
 
   return res.set('Access-Control-Allow-Origin', '*').status(200).json(output);
